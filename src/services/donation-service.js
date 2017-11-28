@@ -59,8 +59,15 @@ export default class DonationService {
     } else {
       status.message = 'Unknown user';
     }
+    this.ea.publish(new LoginStatus(status));
+  }
 
-    return status;
+  logout() {
+    const status = {
+      success: false,
+      message: ''
+    };
+    this.ea.publish(new LoginStatus(status));
   }
 
   register(firstName, lastName, email, password) {
