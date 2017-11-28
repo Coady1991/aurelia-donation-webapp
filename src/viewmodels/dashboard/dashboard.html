@@ -1,0 +1,21 @@
+<template>
+
+  <section>
+    <h2 class="ui center aligned header">Donation Dashboard</h2>
+    <compose view-model="../stats/stats"></compose>
+  </section>
+
+  <section class="ui three column grid basic segment">
+    <aside class="column">
+      <compose view-model="../donate/donate"></compose>
+    </aside>
+    <article class="column">
+      <compose view-model="../report/report"></compose>
+    </article>
+    <article class="column">
+      <compose view-model="../candidates/candidates"></compose>
+    </article>
+  </section>
+
+
+</template>
