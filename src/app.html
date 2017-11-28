@@ -4,16 +4,27 @@
     <nav class="ui inverted menu">
       <header class="header item"><a href="/"> Donation </a></header>
       <div class="right menu">
+        <div show.bind="!loggedIn">
+          <a class="item" click.trigger="signup()"> Signup </a>
+        </div>
         <div show.bind="loggedIn">
-          <a id="logout" class= "item" click.trigger="logout()"> Logout</a>
+          <a class="item" click.trigger="logout()"> Logout </a>
         </div>
       </div>
     </nav>
-    <section class="ui three column stackable grid basic segment">
+
+    <section class="ui four column stackable grid basic segment">
       <div show.bind="!loggedIn" class="ui row">
-        <section class="ui five wide column">
-          <compose view="./viewmodels/login.html"></compose>
-        </section>
+        <div show.bind="!showSignup" class="ui row">
+          <section class="ui five wide column">
+            <compose view="./viewmodels/login.html"></compose>
+          </section>
+        </div>
+        <div show.bind="showSignup" class="ui row">
+          <section class="ui five wide column">
+            <compose view="./viewmodels/signup.html"></compose>
+          </section>
+        </div>
       </div>
       <div show.bind="loggedIn" class="ui row">
         <aside class="column">
@@ -21,11 +32,12 @@
         </aside>
         <article class="column">
           <compose view-model="./viewmodels/report"></compose>
-          <br>
-          <compose view-model="./viewmodels/stats"></compose>
         </article>
         <article class="column">
           <compose view-model="./viewmodels/candidates"></compose>
+        </article>
+        <article class="column">
+          <compose view-model="./viewmodels/stats"></compose>
         </article>
       </div>
     </section>
